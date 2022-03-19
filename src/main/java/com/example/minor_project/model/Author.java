@@ -1,8 +1,7 @@
 package com.example.minor_project.model;
 
-import lombok.Builder;
-import lombok.Getter;
-import lombok.Setter;
+import lombok.*;
+import org.springframework.jmx.export.annotation.ManagedNotifications;
 
 import javax.persistence.*;
 import java.util.List;
@@ -11,6 +10,8 @@ import java.util.List;
 @Getter
 @Setter
 @Builder
+@AllArgsConstructor
+@NoArgsConstructor
 public class Author {
 
     @Id
@@ -19,12 +20,13 @@ public class Author {
 
     private String name;
 
+    @Column(unique = true)
     private String email;
 
     private String website;
 
     @OneToMany(mappedBy = "author")
-    private List<Book> transactionList;
+    private List<Book> books;
 
 
 }

@@ -23,8 +23,6 @@ public class Admin {
 
     private String email;
 
-    @OneToMany(mappedBy = "admin")
-    private List<Transaction> transactions;
 
     @OneToMany(mappedBy = "admin")
     private List<Request> requestsToProcess;

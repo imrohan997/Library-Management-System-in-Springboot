@@ -18,23 +18,15 @@ public class Transaction {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
-    @ManyToOne
-    @JoinColumn
-    private Book book;
+    //for external world
+    private String externalTransactionId;
 
-    @ManyToOne
+    @OneToOne
     @JoinColumn
-    private Admin admin;
-
-    @ManyToOne
-    @JoinColumn
-    private Student student;
+    private Request request;
 
     @CreationTimestamp
     private Date transactionDate;
-
-    @Enumerated(value = EnumType.STRING)
-    private TransactionType type;
 
     @Enumerated(value = EnumType.STRING)
     private TransactionStatus status;

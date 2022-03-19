@@ -1,8 +1,6 @@
 package com.example.minor_project.model;
 
-import lombok.Builder;
-import lombok.Getter;
-import lombok.Setter;
+import lombok.*;
 import org.hibernate.annotations.CreationTimestamp;
 
 import javax.persistence.*;
@@ -12,11 +10,16 @@ import java.util.Date;
 @Getter
 @Setter
 @Builder
+@AllArgsConstructor
+@NoArgsConstructor
 public class Request {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
+
+
+    private String externalId;
 
     @ManyToOne
     @JoinColumn
@@ -30,11 +33,17 @@ public class Request {
     @JoinColumn
     private Book book;
 
+    @OneToOne(mappedBy = "request")
+    private Transaction transaction;
+
     @CreationTimestamp
     private Date requestDate;
 
     @Enumerated(value = EnumType.STRING)
-    private RequestStatus status;
+    private RequestStatus requestStatus;
+
+    @Enumerated(value = EnumType.STRING)
+    private RequestType requestType;
 
 
 }

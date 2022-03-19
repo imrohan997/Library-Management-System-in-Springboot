@@ -1,8 +1,6 @@
 package com.example.minor_project.model;
 
-import lombok.Builder;
-import lombok.Getter;
-import lombok.Setter;
+import lombok.*;
 import org.hibernate.annotations.CreationTimestamp;
 
 import javax.persistence.*;
@@ -13,6 +11,8 @@ import java.util.List;
 @Getter
 @Setter
 @Builder
+@AllArgsConstructor
+@NoArgsConstructor
 public class Student {
 
     @Id
@@ -23,13 +23,12 @@ public class Student {
 
     private int age;
 
+    @Column(unique = true)
     private String rollno;
 
     @OneToMany(mappedBy = "student")
     private List<Book> books;
 
-    @OneToMany(mappedBy = "student")
-    private List<Transaction> transactions;
 
     @OneToMany(mappedBy = "student")
     private List<Request> requests;
