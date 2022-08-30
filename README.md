@@ -29,4 +29,4 @@
 #### 9. Place request 
 ##### POST /student/request
 
-## Database used is Mysql- Database should run at port 3306 for connecting application to it.
+### Database used is Mysql- Database should run at port 3306 for connecting application to it.
